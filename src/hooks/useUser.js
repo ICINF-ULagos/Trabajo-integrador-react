@@ -67,6 +67,7 @@ const useUser = () => {
       console.error(err)
       
     }
+    setIsLoading(false)
 
   }
 
