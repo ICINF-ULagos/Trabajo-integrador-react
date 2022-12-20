@@ -77,3 +77,5 @@ const useUser = () => {
     login,
   }
 }
+
+export default useUser;
