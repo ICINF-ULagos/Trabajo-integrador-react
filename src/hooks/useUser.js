@@ -32,6 +32,7 @@ const useUser = () => {
       if (!res.status) return console.error('xd')
 
       sessionStorage.setItem('token', data.token)
+      sessionStorage.setItem('name', userData.name)
 
     } catch (err) {
       console.error(err)
