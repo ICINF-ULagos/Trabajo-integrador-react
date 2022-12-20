@@ -35,7 +35,7 @@ function Hero({ title, subtitle, image, ctaLink, ctaText, ...rest }) {
                     {subtitle}
                 </Heading>
                 <Link to={ctaLink}>
-                    <Button colorScheme="primary" borderRadius="8px" py="4" py="4" lineHeight="1" size="md">
+                    <Button colorScheme="primary" borderRadius="8px" py="4" lineHeight="1" size="md">
                         {ctaText}
                     </Button>
                 </Link>
