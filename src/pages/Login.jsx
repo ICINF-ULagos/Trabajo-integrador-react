@@ -3,11 +3,14 @@ import { React } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {
-    InputGroup, Input,
-    Button, VStack,
-    Box, StackDivider,
-    Center, Flex,
-    Image, Text,
+    InputGroup,
+    Input,
+    Button,
+    VStack,
+    Box,
+    Flex,
+    Image,
+    Text,
     InputRightElement
 } from '@chakra-ui/react'
 
@@ -25,7 +28,7 @@ function Login() {
                     <Input
                         position="absolute"
                         top="-35px"
-                        right="43px"
+                        right="13px"
                         pr='4.5rem'
                         type={show ? 'text' : 'password'}
                         placeholder='Enter password'
@@ -33,11 +36,13 @@ function Login() {
                         width="600px"
                     />
                     <InputRightElement width='3.5rem'>
-                        <Button h='3.09rem' size='lg' onClick={handleClick}
+                        <Button h='3.19rem'
+                            size='lg'
+                            onClick={handleClick}
                             name="password"
                             position="absolute"
                             top="-36px"
-                            left="-82px"
+                            left="-52px"
                             bg="#bec2c8">
                             {show ? 'Hide' : 'Show'}
                         </Button>
@@ -85,9 +90,12 @@ function Login() {
 
                 <Flex height="100vh" alignItems="center" justifyContent="center">
                     <Box
-                        boxSize={"700px"} borderColor={"#4d5c7b"}
-                        borderRadius={"lg"} color="#242434" px="0.5" borderWidth="0.5px" borderStyle={"solid"}
-                        paddingTop={"20px"}
+                        width={"625px"}
+                        height={"720px"}
+                        borderColor={"#4d5c7b"}
+                        borderRadius={"lg"}
+                        color="#242434"
+                        paddingTop={"15px"}
                         backgroundColor={"whitesmoke"}
                         boxShadow={"dark-lg"}
                     >
@@ -98,7 +106,7 @@ function Login() {
                             <Text fontSize="lg"><b>Sign In</b></Text>
                             <Input width="600px" variant='outline' type="email" name="email" placeholder="Email" size="lg" />
                             <PaswordInput />
-                            <Button width="600px" bg='#f64315' variant='hidden' size="lg" alignItems="center">Ingresar</Button>
+                            <Button fontSize="lg" width="600px" bg='#f64315' variant='hidden' size="lg" alignItems="center">Ingresar</Button>
                         </VStack>
                     </Box>
                 </Flex>
