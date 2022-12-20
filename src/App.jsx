@@ -1,6 +1,11 @@
+import Register from './pages/register'
+
+
 const App = () => {
   return (
-    <h1> Hey </h1>
+    <div style={{backgroundColor:'#e5c185'}}>
+      <Register  />
+    </div>
   )
 }
 
