@@ -1,12 +1,27 @@
-import Register from './pages/register'
+import React from "react";
+import {
+    Route,
+    Routes,
+} from "react-router-dom";
 
+import Login from './pages/Login'
+//import Register from './pages/Register'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
+import './App.css';
 
-const App = () => {
-  return (
-    <div style={{backgroundColor:'#e5c185'}}>
-      <Register  />
-    </div>
-  )
+function App() {
+    return (
+        <>
+            <Navbar />
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/signin" element={<Login />} />
+                </Routes>
+            </div>
+        </>
+  );
 }
 
-export default App
+export default App;
