@@ -1,6 +1,10 @@
 import { Text, Flex } from "@chakra-ui/react";
+import { parseISO, formatDistanceToNow as f } from "date-fns";
 
 const Article = ({ title, body, userId, createAt, updateAt }) => {
+  const format = (date) => {
+    return f(parseISO(date));
+  };
   return (
     <Flex justifyContent="center">
       <article style={{ width: "100ch" }}>
@@ -8,7 +12,7 @@ const Article = ({ title, body, userId, createAt, updateAt }) => {
         <Text fontSize="md">author: {userId}</Text>
         <Text fontSize="2xl">{body}</Text>
         <Text fontSize="sm" as="i">
-          Created at: {createAt}, Updated at: {updateAt}
+          Created: {format(createAt)} ago, Updated: {format(updateAt)} ago.
         </Text>
       </article>
     </Flex>
