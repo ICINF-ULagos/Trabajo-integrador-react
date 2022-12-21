@@ -8,12 +8,11 @@ const Article = ({ title, body, userId, createAt, updateAt }) => {
     return f(parseISO(date));
   };
   return (
-    <Flex justifyContent="center">
-      <article style={{ width: "100ch" }}>
-        <Text fontSize="5xl">{title}</Text>
-        <Text fontSize="md">author: {userId}</Text>
-        <Text fontSize="2xl">{body}</Text>
+    <Flex justifyContent="center" p="1rem">
+      <article style={{ width: "85ch" }}>
+        <Text fontSize="3xl">{title}</Text>
         <AuthorName mb="2rem" id={userId} />
+        <Text fontSize="md">{body}</Text>
         <Text fontSize="sm" as="i">
           Created: {format(createAt)} ago, Updated: {format(updateAt)} ago.
         </Text>
