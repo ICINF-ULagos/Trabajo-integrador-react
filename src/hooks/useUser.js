@@ -17,9 +17,9 @@ const useUser = () => {
     if (!userData.email) return;
     if (!userData.phone) return;
     if (!userData.password) return;
-    if (!userData.passworConfirmation) return;
+    if (!userData.password_confirmation) return;
 
-    if (userData.passworConfirmation !== userData.password) return;
+    if (userData.password_confirmation !== userData.password) return;
 
     const rawData = JSON.stringify(userData);
 
@@ -31,6 +31,7 @@ const useUser = () => {
 
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("name", userData.name);
+      setIsLoading(false);
     } catch (err) {
       console.error(err);
     }

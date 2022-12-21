@@ -1,28 +1,24 @@
-import { React } from "react";
-import register from "../hooks/useUser";
-import {
-  Input,
-  Button,
-  VStack,
-  Box,
-  Flex,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import useUser from "../hooks/useUser";
+import { Input, Button, VStack, Box, Flex, Image } from "@chakra-ui/react";
 
 const Register = () => {
-  const handlerSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const formValues = Object.fromEntries(formData);
-    const body = JSON.stringify(formValues);
-    register(body);
-    console.log(sessionStorage.getItem("name"));
+  const { register } = useUser();
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formValues = Object.fromEntries(formData);
+
+      await register(formValues);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div>
-      <form onSubmit={handlerSubmit}>
+      <form onSubmit={handleSubmit}>
         <Flex alignItems="center" justifyContent="center">
           <Box
             borderColor={"#4d5c7b"}
@@ -59,7 +55,9 @@ const Register = () => {
                 variant="outline"
                 type="number"
                 name="phone"
-                placeholder="12345678"
+                placeholder="123456789"
+                minLength="9"
+                maxLength="9"
                 size="md"
               />
               <Input
@@ -72,7 +70,7 @@ const Register = () => {
               <Input
                 variant="outline"
                 type="password"
-                name="password-confirmation"
+                name="password_confirmation"
                 placeholder="*********"
                 size="md"
               />
