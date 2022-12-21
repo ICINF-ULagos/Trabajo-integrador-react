@@ -41,14 +41,14 @@ function Login() {
         <Flex alignItems="center" justifyContent="center">
           <Box
             width={"625px"}
-            height={"720px"}
+            height={"660px"}
             borderColor={"#4d5c7b"}
             borderRadius={"lg"}
             color="#242434"
             paddingTop={"15px"}
             backgroundColor={"whitesmoke"}
             boxShadow={"dark-lg"}
-            marginTop={"100px"}
+            marginTop={"15px"}
           >
             <VStack spacing={"48px"}>
               <Image
