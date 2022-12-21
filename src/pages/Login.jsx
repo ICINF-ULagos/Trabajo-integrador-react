@@ -1,5 +1,6 @@
 import { React } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   InputGroup,
   Input,
@@ -18,6 +19,7 @@ function Login() {
   const { login } = useUser();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+    const navigate = useNavigate();
 
   const handlerSubmit = async (event) => {
     try {
@@ -26,9 +28,8 @@ function Login() {
       const formData = new FormData(event.target);
       const formValues = Object.fromEntries(formData);
 
-      console.log(formValues);
       const result = await login(formValues);
-      console.log(result);
+      navigate('/user/timeline')
     } catch (error) {
       console.error(error.message);
       setMessage(error.message);
