@@ -1,5 +1,5 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
-import { Flex, Box, Spacer } from "@chakra-ui/react"
+import { Flex, Box, Spacer, Image } from "@chakra-ui/react"
 
 
 const CustomLink = ({ to, children, ...props }) => {
@@ -21,12 +21,12 @@ const Navbar = () => {
       <Box bg='#3d5c7b' fontSize='xl' color='white'  p={4}>
         <Flex direction="row">
           <Link to="/" className="site-title">
-            Site Name
+            <Image src="../../public/capybara.png" boxSize="40px" p="0" m="0" objectFit="cover" />
           </Link>
 
           <Spacer />
-          <CustomLink style={{marginRight: '2em'}} to="/signin">Sig In</CustomLink>
-          <CustomLink to="/signup">Sig Up</CustomLink>
+          <CustomLink style={{marginRight: '2em'}} to="/login">Log In</CustomLink>
+          <CustomLink to="/register">Sig Up</CustomLink>
         </Flex>
       </Box>
     </nav>
