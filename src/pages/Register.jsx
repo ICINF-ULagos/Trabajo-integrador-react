@@ -23,80 +23,67 @@ const Register = () => {
   return (
     <div>
       <form onSubmit={handlerSubmit}>
-        <Flex height="100vh" alignItems="center" justifyContent="center">
+        <Flex alignItems="center" justifyContent="center">
           <Box
-            boxSize={"900px,1500px"}
             borderColor={"#4d5c7b"}
             borderRadius={"lg"}
             color="#242434"
-            px="0.5"
             borderWidth="0.5px"
             borderStyle={"solid"}
-            paddingTop={"20px"}
             backgroundColor={"whitesmoke"}
             boxShadow={"dark-lg"}
+            marginTop="10px"
           >
-            <VStack spacing={"48px"}>
+            <VStack spacing={"0.5rem"}>
               <Image
                 src="https://apingweb.com/img/aping.png"
-                size="100%"
                 rounded="1rem"
                 borderRadius={"lg"}
                 shadow="2xl"
               ></Image>
-              <Text fontSize="lg">
-                <b>Register</b>
-              </Text>
               <Input
-                width="600px"
                 variant="outline"
                 type="text"
                 name="name"
-                placeholder="Name"
-                size="lg"
+                placeholder="John Doe"
+                size="md"
               />
               <Input
-                width="600px"
                 variant="outline"
                 type="email"
                 name="email"
-                placeholder="Email"
-                size="lg"
+                placeholder="john@doe.com"
+                size="md"
               />
               <Input
-                width="600px"
                 variant="outline"
                 type="number"
                 name="phone"
-                placeholder="Phone"
-                size="lg"
+                placeholder="12345678"
+                size="md"
               />
               <Input
-                width="600px"
                 variant="outline"
                 type="password"
                 name="password"
-                placeholder="Password"
-                size="lg"
+                placeholder="*********"
+                size="md"
               />
               <Input
-                width="600px"
                 variant="outline"
                 type="password"
                 name="password-confirmation"
-                placeholder="Confirm password"
-                size="lg"
+                placeholder="*********"
+                size="md"
               />
               <Button
-                width="600px"
                 bg="#f64315"
                 color="white"
                 type="submit"
                 variant="hidden"
                 size="lg"
-                alignItems="center"
               >
-                Submit
+                Register!
               </Button>
             </VStack>
           </Box>
