@@ -1,16 +1,19 @@
 import useUser from "../hooks/useUser";
 import { Input, Button, VStack, Box, Flex, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { register } = useUser();
-
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+
       const formData = new FormData(event.target);
       const formValues = Object.fromEntries(formData);
 
       await register(formValues);
+      navigate("/");
     } catch (error) {
       console.error(error);
     }

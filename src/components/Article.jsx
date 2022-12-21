@@ -1,14 +1,20 @@
 import { Text, Flex } from "@chakra-ui/react";
+import { parseISO, formatDistanceToNow as f } from "date-fns";
+
+import AuthorName from "./AuthorName";
 
 const Article = ({ title, body, userId, createAt, updateAt }) => {
+  const format = (date) => {
+    return f(parseISO(date));
+  };
   return (
-    <Flex justifyContent="center">
-      <article style={{ width: "100ch" }}>
-        <Text fontSize="5xl">{title}</Text>
-        <Text fontSize="md">author: {userId}</Text>
-        <Text fontSize="2xl">{body}</Text>
+    <Flex justifyContent="center" p="1rem">
+      <article style={{ width: "85ch" }}>
+        <Text fontSize="3xl">{title}</Text>
+        <AuthorName mb="2rem" id={userId} />
+        <Text fontSize="md">{body}</Text>
         <Text fontSize="sm" as="i">
-          Created at: {createAt}, Updated at: {updateAt}
+          Created: {format(createAt)} ago, Updated: {format(updateAt)} ago.
         </Text>
       </article>
     </Flex>
