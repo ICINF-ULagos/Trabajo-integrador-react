@@ -26,7 +26,7 @@ const Navbar = () => {
 
           <Spacer />
           <CustomLink style={{marginRight: '2em'}} to="/login">Log In</CustomLink>
-          <CustomLink to="/register">Sig Up</CustomLink>
+          <CustomLink to="/register">Sign Up</CustomLink>
         </Flex>
       </Box>
     </nav>
