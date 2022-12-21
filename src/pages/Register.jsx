@@ -2,8 +2,9 @@ import axios from 'axios';
 import { React } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 import {
-    InputGroup, Input,
+    Input,
     Button, VStack,
     Box, Flex,
     Image, Text
@@ -12,34 +13,7 @@ import {
 function Register() {
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
-
-    const PaswordInput = () => {
-        const [passworderror, setpassword] = useState(false)
-
-        return (
-            <InputGroup size='md'>
-                <Flex>
-                    <VStack spacing={'48px'}>
-                    <Input
-                        pr='4.5rem'
-                        type='password'
-                        placeholder='Enter password'
-                        size="lg"
-                        width="600px"
-                    />
-                    <Input
-                        pr='4.5rem'
-                        type='password'
-                        placeholder='Confirm password'
-                        size="lg"
-                        width="600px"
-                    />
-
-                    </VStack>
-                </Flex>
-            </InputGroup>
-        )
-    }
+    const {Register} = useUser();
 
     const handlerSubmit = async (event) => {
         try {
@@ -47,21 +21,13 @@ function Register() {
 
             const formData = new FormData(event.target);
             const formValues = Object.fromEntries(formData);
-
-            const headers = {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            };
             const body = JSON.stringify(formValues)
-
-            const response = await axios.post("https://apingweb.com/api/Register", body, headers)
+            const response = await Register(body);
+            // const response = await axios.post("https://apingweb.com/api/Register", body, headers)
             const responseBody = response.status ? response.data : response.statusText;
             console.log(responseBody.result)
 
             if (response.status) {
-                sessionStorage.setItem("email", responseBody.result.email);
-                sessionStorage.setItem("token", responseBody.token);
                 setMessage(null)
                 navigate('/')
             } else {
@@ -92,9 +58,10 @@ function Register() {
                             <Text fontSize="lg"><b>Register</b></Text>
                             <Input width="600px" variant='outline' type="text" name="name" placeholder="Name" size="lg" />
                             <Input width="600px" variant='outline' type="email" name="email" placeholder="Email" size="lg" />
-                            <Input width="600px" variant='outline' type="Phone" name="phone" placeholder="Phone" size="lg" />
-                            <PaswordInput />
-                            <Button width="600px" bg='#f64315' color='white' variant='hidden' size="lg" alignItems="center">Submit</Button>
+                            <Input width="600px" variant='outline' type="number" name="phone" placeholder="Phone" size="lg" />
+                            <Input width="600px" variant='outline' type="password" name="password" placeholder="Password" size="lg" />
+                            <Input width="600px" variant='outline' type="password" name="password-confirmation" placeholder="Confirm password" size="lg" />
+                            <Button width="600px" bg='#f64315' color='white' type='submit' variant='hidden' size="lg" alignItems="center">Submit</Button>
                         </VStack>
                     </Box>
                 </Flex>
