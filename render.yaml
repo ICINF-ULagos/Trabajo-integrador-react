@@ -1,0 +1,6 @@
+services:
+- type: web
+  name: webcapi
+  repo: https://github.com/ICINF-ULagos/Trabajo-integrador-react.git
+  env: docker
+  autoDeploy: false
