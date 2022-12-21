@@ -1,5 +1,5 @@
 import { React } from "react";
-import { register } from "../../hooks/useUser";
+import register from "../hooks/useUser";
 import {
   Input,
   Button,
@@ -102,8 +102,6 @@ const Register = () => {
           </Box>
         </Flex>
       </form>
-
-      {message && <p>{message}</p>}
     </div>
   );
 };
