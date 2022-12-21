@@ -15,9 +15,8 @@ import {
 import useUser from "../hooks/useUser";
 
 function Login() {
-  const [message, setMessage] = useState(null);
-  const { login } = useUser();
   const [show, setShow] = useState(false);
+  const { login } = useUser();
   const handleClick = () => setShow(!show);
     const navigate = useNavigate();
 
@@ -28,11 +27,10 @@ function Login() {
       const formData = new FormData(event.target);
       const formValues = Object.fromEntries(formData);
 
-      const result = await login(formValues);
+      await login(formValues);
       navigate('/user/timeline')
     } catch (error) {
       console.error(error.message);
-      setMessage(error.message);
     }
   };
 
@@ -59,9 +57,7 @@ function Login() {
                 borderRadius={"lg"}
                 shadow="2xl"
               ></Image>
-              <Text fontSize="lg">
-                <b>Sign In</b>
-              </Text>
+              <Text fontSize="lg" as="b"> Sign Up </Text>
               <Input
                 width="600px"
                 variant="outline"
@@ -113,8 +109,6 @@ function Login() {
           </Box>
         </Flex>
       </form>
-
-      {message && <p>{message}</p>}
     </div>
   );
 }
