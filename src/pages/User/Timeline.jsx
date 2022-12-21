@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Center } from "@chakra-ui/react";
 
 import usePost from "../../hooks/usePosts";
 import Article from "../../components/Article";
@@ -21,7 +21,9 @@ const Timeline = () => {
   return (
     <section>
       {isLoading ? (
-        <Spinner />
+        <Center>
+          <Spinner mt="5rem" color="#F64315" size="xl" thickness="5px" />
+        </Center>
       ) : (
         posts.map((item) => (
           <Article
