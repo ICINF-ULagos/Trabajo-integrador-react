@@ -1,81 +1,70 @@
-import { useState } from 'react'
-import axios from 'axios'
+import { useState } from "react";
+import axios from "axios";
 
-const apiURL = 'https://apingweb.com/api'
+const apiURL = "https://apingweb.com/api";
 
 const headers = {
-  'Content-Type': 'application/json',
-}
+  "Content-Type": "application/json",
+};
 
 const useUser = () => {
-  
-  const [ isLoading, setIsLoading ] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
-
-  const register = async(userData) =>{
-
+  const register = async (userData) => {
     // Data validation
-    setIsLoading(true)
-    if (!userData.name) return
-    if (!userData.email) return
-    if (!userData.phone) return
-    if (!userData.password) return
-    if (!userData.passworConfirmation) return
+    setIsLoading(true);
+    if (!userData.name) return;
+    if (!userData.email) return;
+    if (!userData.phone) return;
+    if (!userData.password) return;
+    if (!userData.passworConfirmation) return;
 
-    if (userData.passworConfirmation !== userData.password) return
+    if (userData.passworConfirmation !== userData.password) return;
 
-    const rawData = JSON.stringify(userData)
+    const rawData = JSON.stringify(userData);
 
     try {
+      const res = await axios.post(`${apiURL}/register`, rawData, { headers });
+      const data = res.status ? res.data : res.statusText;
 
-      const res = await axios.post(`${apiURL}/register`, rawData, {headers} )
-      const data = res.status ? res.data : res.statusText
+      if (!res.status) return console.error("xd");
 
-      if (!res.status) return console.error('xd')
-
-      sessionStorage.setItem('token', data.token)
-      sessionStorage.setItem('name', userData.name)
-
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("name", userData.name);
     } catch (err) {
-      console.error(err)
-      
+      console.error(err);
     }
 
-    setIsLoading(false)
-
-  }
+    setIsLoading(false);
+  };
 
   const login = async (userData) => {
-    setIsLoading(true)
+    setIsLoading(true);
 
-    if (!userData.email) return
-    if (!userData.password) return
+    if (!userData.email) return;
+    if (!userData.password) return;
 
-    const rawData = JSON.stringify(userData)
+    const rawData = JSON.stringify(userData);
 
     try {
+      const res = await axios.post(`${apiURL}/login`, rawData, { headers });
+      const data = res.status ? res.data : res.statusText;
 
-      const res = await axios.post(`${apiURL}/login`, rawData, {headers})
-      const data = res.status ? res.data : res.statusText
+      if (!res.status) return console.error("xd");
 
-      if (!res.status) return console.error('xd')
-
-      sessionStorage.setItem('token', data.token)
-      sessionStorage.setItem('name', data.result.name)
-      
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("name", data.result.name);
     } catch (err) {
-      console.error(err)
-      
+      console.error(err);
     }
-    setIsLoading(false)
+    setIsLoading(false);
+  };
 
-  }
-
-  return{
+  return {
     isLoading,
     register,
     login,
-  }
-}
+  };
+};
 
 export default useUser;
