@@ -106,7 +106,7 @@ function Login() {
                 size="lg"
                 alignItems="center"
               >
-                Ingresar
+                Submit
               </Button>
             </VStack>
           </Box>
